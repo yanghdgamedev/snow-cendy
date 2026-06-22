@@ -1,0 +1,66 @@
+{
+  "XSize": 11,
+  "YSize": 11,
+  "Arrows": [
+    {
+      "Indices": [
+        62,
+        63,
+        64,
+        65
+      ],
+      "color": "00000000",
+      "colorType": 0,
+      "colorIndex": 0,
+      "isCollected": false,
+      "isClicked": false
+    },
+    {
+      "Indices": [
+        58,
+        57,
+        56,
+        55
+      ],
+      "color": "00000000",
+      "colorType": 0,
+      "colorIndex": 0,
+      "isCollected": false,
+      "isClicked": false
+    },
+    {
+      "Indices": [
+        38,
+        27,
+        16,
+        5
+      ],
+      "color": "00000000",
+      "colorType": 0,
+      "colorIndex": 0,
+      "isCollected": false,
+      "isClicked": false
+    },
+    {
+      "Indices": [
+        82,
+        93,
+        104,
+        115
+      ],
+      "color": "00000000",
+      "colorType": 0,
+      "colorIndex": 0,
+      "isCollected": false,
+      "isClicked": false
+    }
+  ],
+  "ArrowPartData": [],
+  "LevelFeatureData": [
+    {
+      "Index": 60,
+      "FeatureType": 2,
+      "FeatureData": null
+    }
+  ]
+}
