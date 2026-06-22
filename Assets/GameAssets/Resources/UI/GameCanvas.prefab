@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cd567ca3b77948679a12a66b95df6bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSpaceCamera: 1
+  isSpaceCamera: 0
   canvasName: 
 --- !u!1 &1284728536791382128
 GameObject:
