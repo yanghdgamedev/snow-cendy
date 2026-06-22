@@ -20,6 +20,10 @@ public class LevelLoader : MonoBehaviour
     
     public bool IsLevelLoaded => levelLoaded != null;
 
+    /// <summary>The level prefab instance currently loaded (null if none). Index is <see cref="level"/>.</summary>
+    public BaseLevel CurrentLevel => levelLoaded;
+    public int CurrentLevelIndex => level;
+
     public void RegisterListenerBeginLoad(UnityAction<object> action)
     {
         OnBeginLoad += action;

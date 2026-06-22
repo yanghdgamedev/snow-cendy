@@ -44,7 +44,7 @@ public class
     [MenuItem("Tools/ Open Scene/GamePlay %g")]
     public static void OpenGamePlay()
     {
-        string localPath = "Assets/SourcesCode/Scenes/GamePlay.unity";
+        string localPath = "Assets/GameAssets/Scenes/GamePlay.unity";
         EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo();
         EditorSceneManager.OpenScene(localPath);
     }
@@ -52,7 +52,7 @@ public class
     [MenuItem("Tools/ Open Scene/SceneLoading %l")]
     public static void OpenSceneLoading()
     {
-        string localPath = "Assets/SourcesCode/Scenes/LoadingGame.unity";
+        string localPath = "Assets/GameAssets/Scenes/LoadingGame.unity";
         EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo();
         EditorSceneManager.OpenScene(localPath);
     }
@@ -70,7 +70,7 @@ public class
     {
         Debug.Log("Select folder : scenes");
  
-        string path =  "Assets/SourcesCode/Resources/LevelData/LevelData_1.asset";
+        string path =  "Assets/GameAssets/Resources/Levels/Level_1.prefab";
  
         UnityEngine.Object obj = AssetDatabase.LoadAssetAtPath(path, typeof(UnityEngine.Object));
  
