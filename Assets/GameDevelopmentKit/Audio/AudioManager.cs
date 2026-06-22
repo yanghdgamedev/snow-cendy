@@ -169,15 +169,6 @@ public class MusicData
 
 public enum SoundKey {
     ButtonClick = 0,
-    RollingBall = 1,
-    Shoot = 2,
-    InHole_1 = 3,
-    InHole_2 = 4,
-    Victory = 5,
-    JumpBall = 6,
-    LevelComplete = 7,
-    IceBreak = 8,
-    ShowColor = 9
 }
 
 public enum MusicKey
