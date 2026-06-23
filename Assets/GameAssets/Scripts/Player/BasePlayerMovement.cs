@@ -9,12 +9,15 @@ using UnityEngine;
 public abstract class BasePlayerMovement : BaseMovement
 {
     [SerializeField] protected float speed;
+    [Tooltip("How fast the heading turns toward the input direction (degrees/second).")]
+    [SerializeField] protected float turnSpeed = 540f;
     [SerializeField] protected float Gravity = 9.8f;
     [SerializeField] protected float GravityOnGround = 15f;
     [SerializeField] protected Vector3 Velocity;
 
     protected CharacterController _characterController;
     protected Vector3 _tempDirection;
+    protected Vector3 _currentDirection;
     protected BaseInput _input;
 
     protected bool isGrounded = true;
@@ -34,6 +37,14 @@ public abstract class BasePlayerMovement : BaseMovement
     {
         _input = GetComponent<BaseInput>();
         _characterController = GetComponent<CharacterController>();
+
+        // Start the heading from where we already face (flattened) so the first
+        // input doesn't snap from a zero vector.
+        _currentDirection = Vector3.ProjectOnPlane(transform.forward, Vector3.up).normalized;
+        if (_currentDirection.sqrMagnitude < 0.0001f)
+        {
+            _currentDirection = Vector3.forward;
+        }
     }
 
     protected virtual void Update()
@@ -83,9 +94,25 @@ public abstract class BasePlayerMovement : BaseMovement
     private void HandleDirection()
     {
         _tempDirection = _input.GetInput();
-        _tempDirection = _tempDirection.normalized;
-        Velocity.x = _tempDirection.x * speed * speedMultiplier;
-        Velocity.z = _tempDirection.z * speed * speedMultiplier;
+        _tempDirection.y = 0f;
+
+        if (_tempDirection.sqrMagnitude > 0.0001f)
+        {
+            // Turn the current heading toward the input at a fixed angular speed, so a
+            // sharp stick flick curves around smoothly instead of snapping instantly.
+            Vector3 target = _tempDirection.normalized;
+            float maxRadians = turnSpeed * Mathf.Deg2Rad * Time.deltaTime;
+            _currentDirection = Vector3.RotateTowards(_currentDirection, target, maxRadians, 0f);
+
+            Velocity.x = _currentDirection.x * speed * speedMultiplier;
+            Velocity.z = _currentDirection.z * speed * speedMultiplier;
+        }
+        else
+        {
+            // No input: stop moving, but keep the heading so resuming doesn't snap.
+            Velocity.x = 0f;
+            Velocity.z = 0f;
+        }
     }
 
     private void ApplyMovement()
